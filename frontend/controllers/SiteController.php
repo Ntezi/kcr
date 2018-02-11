@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\Semester;
+use frontend\components\BaseController;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -16,7 +18,7 @@ use frontend\models\ContactForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @inheritdoc
@@ -26,8 +28,11 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
                 'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
                     [
                         'actions' => ['signup'],
                         'allow' => true,
@@ -40,6 +45,7 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -72,7 +78,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $semesters = Semester::find()->all();
+        return $this->render('index', [
+            'semesters' => $semesters,
+        ]);
     }
 
     /**
@@ -82,6 +91,8 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = "access";
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

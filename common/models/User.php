@@ -1,4 +1,5 @@
 <?php
+
 namespace common\models;
 
 use Yii;
@@ -24,7 +25,7 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
 
 
     /**
@@ -113,7 +114,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -185,5 +186,34 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function updatePwd()
+    {
+        $users = self::find()->all();
+
+        if (!empty($users)) {
+            foreach ($users as $user) {
+                if ($user->username === $user->password_hash) {
+//                    $user->setPassword($user->password_hash);
+                    $user->generateAuthKey();
+                    $user->save();
+                }
+            }
+        }
+    }
+
+    public static function updateStudent()
+    {
+        $students = Student::find()->all();
+        if (!empty($students)) {
+            foreach ($students as $student) {
+                $user = self::findByUsername($student->code);
+                if (!empty($user)) {
+                    $student->user_id = $user->id;
+                    $student->save();
+                }
+            }
+        }
     }
 }

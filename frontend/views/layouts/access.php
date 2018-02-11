@@ -26,15 +26,8 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div id="wrapper">
-    <!-- Navigation -->
-    <?php echo $this->render('@app/views/layouts/navigation') ?>
-
-    <div id="page-wrapper">
-        <?= $content ?>
-    </div>
-    <!-- /#page-wrapper -->
-
+<div class="container">
+    <?= $content ?>
 </div>
 
 <?php $this->endBody() ?>
