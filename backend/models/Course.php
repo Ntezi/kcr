@@ -38,15 +38,39 @@ class Course extends BaseCourse
         ];
     }
 
-    public function getInstructor(){
+    public function getInstructor()
+    {
         return Instructor::findOne($this->instructor_id);
     }
 
-    public function getCourseField(){
+    public function getCourseField()
+    {
         return CourseField::findOne($this->course_field_id);
     }
 
-    public function getSemester(){
+    public function getSemester()
+    {
         return Semester::findOne($this->semester_id);
+    }
+
+    public static function getAllRegisteredCourses()
+    {
+        $sql ='SELECT `course`.* 
+                FROM `course`, `student`, `student_has_courses`  
+                WHERE `course`.`id` = `student_has_courses`.`course_id` 
+                AND `student`.`id` = `student_has_courses`.`student_id`
+                AND `student`.`id` = ' . Student::thisStudent()->id;
+        return self::findBySql($sql);
+    }
+
+    public static function getRegisteredCourses($semester_id)
+    {
+        $sql ='SELECT `course`.* 
+                FROM `course`, `student`, `student_has_courses`  
+                WHERE `course`.`id` = `student_has_courses`.`course_id` 
+                AND `student`.`id` = `student_has_courses`.`student_id`
+                AND `student`.`id` = ' . Student::thisStudent()->id . '
+                AND `course`.`semester_id` = ' . $semester_id;
+        return self::findBySql($sql);
     }
 }

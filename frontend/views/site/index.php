@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use backend\models\Course;
+
 $this->title = Yii::$app->name;
 ?>
 <div class="row">
@@ -23,7 +25,7 @@ $this->title = Yii::$app->name;
                                 <i class="fa fa-book fa-2x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div>26</div>
+                                <div><?php echo count(Course::getRegisteredCourses($semester->id)->all()) ?></div>
                                 <div class="huge"><?php echo $semester->name ?></div>
                             </div>
                         </div>

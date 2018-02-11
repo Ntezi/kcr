@@ -6,6 +6,7 @@
  * Time: 6:57 PM
  */
 
+use backend\models\Course;
 ?>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -20,8 +21,13 @@
     </div>
     <!-- /.navbar-header -->
 
-    <ul class="nav navbar-top-links navbar-right">
+    <ul class="nav navbar-top-links navbar-left">
         <li><a href="#"> <?php echo $this->context->thisStudent()->full_name; ?></a></li>
+        <li><a class="btn btn-xs btn-default" href="<?php echo Yii::$app->request->baseUrl; ?>/course/all"> <?php echo Yii::t('app', 'Total Courses Registered') ?> :
+                <?php echo count(Course::getAllRegisteredCourses()->all()) ?></a></li>
+    </ul>
+
+    <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo Yii::$app->user->identity->email ?>
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
