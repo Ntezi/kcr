@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://www.kic.ac.jp/wp-content/themes/KIC/img/common/logo_en.jpg" height="100px">
+        <img src="https://www.kic.ac.jp/wp-content/themes/KIC/img/common/logo_en.jpg" height="auto" width="auto">
     </a>
     <h1 align="center">KIC Course Registration Management</h1>
     <br>
