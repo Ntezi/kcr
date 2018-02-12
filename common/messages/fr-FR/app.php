@@ -17,8 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Course Code' => 'Code de cours',
-    'View Details' => 'Voir les détails',
+    'Course Field ID' => '',
+    'Instructor ID' => '',
+    'Semester ID' => '',
     '\'Are you sure you want to delete this item?' => 'Êtes-vous sûr de bien vouloir supprimer cet élément?',
     'All Registered Courses' => 'Tous les cours enregistrés',
     'Are you sure you want to delete this item?' => 'Êtes-vous sûr de bien vouloir supprimer cet élément?',
@@ -27,6 +28,7 @@ return [
     'Class' => 'Classe',
     'Code' => 'Code',
     'Course' => 'Cours',
+    'Course Code' => 'Code de cours',
     'Course Field' => 'Champs de cours',
     'Course Fields' => 'Champs de cours',
     'Courses' => 'Cours',
@@ -79,4 +81,5 @@ return [
     'Updated At' => 'Mise à jour à',
     'Updated By' => 'Mis à jour par',
     'User ID' => 'Identifiant d\'utilisateur',
+    'View Details' => 'Voir les détails',
 ];
