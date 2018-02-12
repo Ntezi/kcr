@@ -38,7 +38,7 @@ class CourseController extends BaseController
     public function actionAll()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Course::getAllRegisteredCourses(),
+            'query' => Course::getAllRegisteredCoursesByThisStudent(),
         ]);
 
         return $this->render('all', [

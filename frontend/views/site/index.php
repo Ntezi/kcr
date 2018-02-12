@@ -25,7 +25,7 @@ $this->title = Yii::$app->name;
                                 <i class="fa fa-book fa-2x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div><?php echo count(Course::getRegisteredCourses($semester->id)->all()) ?></div>
+                                <div><?php echo count(Course::getRegisteredCoursesBySemester($semester->id)->all()) ?></div>
                                 <div class="huge"><?php echo $semester->name ?></div>
                             </div>
                         </div>

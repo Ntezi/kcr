@@ -39,6 +39,7 @@ class CourseController extends Controller
      */
     public function actionIndex()
     {
+        
         $dataProvider = new ActiveDataProvider([
             'query' => Course::find(),
         ]);
@@ -122,7 +123,7 @@ class CourseController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+//        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

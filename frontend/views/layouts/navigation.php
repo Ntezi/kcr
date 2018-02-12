@@ -24,7 +24,7 @@ use backend\models\Course;
     <ul class="nav navbar-top-links navbar-left">
         <li><a href="#"> <?php echo $this->context->thisStudent()->full_name; ?></a></li>
         <li><a class="btn btn-xs btn-default" href="<?php echo Yii::$app->request->baseUrl; ?>/course/all"> <?php echo Yii::t('app', 'Total Courses Registered') ?> :
-                <?php echo count(Course::getAllRegisteredCourses()->all()) ?></a></li>
+                <?php echo count(Course::getAllRegisteredCoursesByThisStudent()->all()) ?></a></li>
     </ul>
 
     <ul class="nav navbar-top-links navbar-right">

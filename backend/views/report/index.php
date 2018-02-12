@@ -2,16 +2,17 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use backend\models\Student;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', $student->full_name . ' - ' . 'Courses');
+$this->title = Yii::t('app', 'Courses');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="course-index">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -20,10 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'title',
             [
-                'attribute' => 'instructor_id',
-                'label' => Yii::t('app', 'Instructor'),
+                'label' => Yii::t('app', 'Students'),
                 'value' => function ($model) {
-                    return $model->getInstructor()->name;
+                    return count(Student::getRegisteredStudents($model->id)->all());
                 },
             ],
             [
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
 
                     'view' => function ($url, $model) {
-                        return Html::a(Html::tag('i', '', ['class' => 'fa fa-eye']), ['course/view', 'id' => $model->id],
+                        return Html::a(Html::tag('i', '', ['class' => 'fa fa-eye']), $url,
                             ['class' => 'btn btn-success btn-xs']);
                     },
                 ],

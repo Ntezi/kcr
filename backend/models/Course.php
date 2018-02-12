@@ -72,7 +72,16 @@ class Course extends BaseCourse
 
     public static function getAllRegisteredCourses()
     {
-        $sql ='SELECT `course`.* 
+        $sql = 'SELECT DISTINCT `course`.* 
+                FROM `course`, `student`, `student_has_courses`  
+                WHERE `course`.`id` = `student_has_courses`.`course_id` 
+                AND `student`.`id` = `student_has_courses`.`student_id`';
+        return self::findBySql($sql);
+    }
+
+    public static function getAllRegisteredCoursesByThisStudent()
+    {
+        $sql = 'SELECT `course`.* 
                 FROM `course`, `student`, `student_has_courses`  
                 WHERE `course`.`id` = `student_has_courses`.`course_id` 
                 AND `student`.`id` = `student_has_courses`.`student_id`
@@ -80,9 +89,19 @@ class Course extends BaseCourse
         return self::findBySql($sql);
     }
 
-    public static function getRegisteredCourses($semester_id)
+    public static function getAllRegisteredCoursesByStudent($student_id)
     {
-        $sql ='SELECT `course`.* 
+        $sql = 'SELECT `course`.* 
+                FROM `course`, `student`, `student_has_courses`  
+                WHERE `course`.`id` = `student_has_courses`.`course_id` 
+                AND `student`.`id` = `student_has_courses`.`student_id`
+                AND `student`.`id` = ' . $student_id;
+        return self::findBySql($sql);
+    }
+
+    public static function getRegisteredCoursesBySemester($semester_id)
+    {
+        $sql = 'SELECT `course`.* 
                 FROM `course`, `student`, `student_has_courses`  
                 WHERE `course`.`id` = `student_has_courses`.`course_id` 
                 AND `student`.`id` = `student_has_courses`.`student_id`
