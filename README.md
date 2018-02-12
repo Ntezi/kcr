@@ -1,10 +1,12 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
+    <a href="http://34.206.241.249/" target="_blank">
         <img src="https://www.kic.ac.jp/wp-content/themes/KIC/img/common/logo_en.jpg" height="auto" width="auto">
     </a>
     <h1 align="center">KIC Course Registration Management</h1>
     <br>
 </p>
+
+<p>This web app is written in php using <a  href="http://www.yiiframework.com/" target="_blank">Yii2 Framework</a></p>
 
 DIRECTORY STRUCTURE
 -------------------
