@@ -19,14 +19,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'full_name',
+            [
+                'attribute' => 'user_id',
+                'label' => Yii::t('app', 'Email Address'),
+                'value' => function ($model) {
+                    return $model->getEmail();
+                },
+            ],
             'code',
             'class',
             'type',
-            //'status',
-            //'created_at',
-            //'updated_at',
-            //'created_by',
-            //'updated_by',
 
             [
                 'class' => 'yii\grid\ActionColumn',

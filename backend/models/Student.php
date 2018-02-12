@@ -8,6 +8,7 @@
 
 namespace backend\models;
 
+use common\models\User;
 use Yii;
 use common\models\Student as BaseStudent;
 
@@ -19,7 +20,7 @@ class Student extends BaseStudent
         return (!empty($this_student)) ? $this_student : false;
     }
 
-    public static  function getRegisteredStudents($course_id)
+    public static function getRegisteredStudents($course_id)
     {
         $sql = 'SELECT `student`.* 
                 FROM `course`, `student`, `student_has_courses`  
@@ -29,12 +30,18 @@ class Student extends BaseStudent
         return self::findBySql($sql);
     }
 
-    public static  function getAllRegisteredStudents()
+    public static function getAllRegisteredStudents()
     {
         $sql = 'SELECT DISTINCT `student`.* 
                 FROM `course`, `student`, `student_has_courses`  
                 WHERE `student`.`id` = `student_has_courses`.`student_id` 
                 AND `course`.`id` = `student_has_courses`.`course_id`';
         return self::findBySql($sql);
+    }
+
+    public function getEmail()
+    {
+        $email = User::findOne($this->user_id)->email;
+        return (!empty($email)) ? User::findOne($this->user_id)->email : false;
     }
 }
