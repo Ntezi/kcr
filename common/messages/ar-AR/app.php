@@ -79,4 +79,6 @@ return [
     'Incorrect username or password.'=>'اسم المستخدم أو كلمة المرور غير صحيحة.',
     'Course Code'=>'رمز المقرر',
     'View Details'=>'عرض التفاصيل',
+    'Registered Courses'=>'الدورات المسجلة',
+    'Registered Students'=>'طالب مسجل',
 ];

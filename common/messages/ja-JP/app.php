@@ -82,4 +82,6 @@ return [
     'Updated By' => 'によって更新',
     'User ID' => 'ユーザーID',
     'View Details' => '詳細を見る',
+    'Registered Courses'=>'登録されたコース',
+    'Registered Students'=>'登録学生',
 ];

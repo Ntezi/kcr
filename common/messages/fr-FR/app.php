@@ -82,4 +82,6 @@ return [
     'Updated By' => 'Mis à jour par',
     'User ID' => 'Identifiant d\'utilisateur',
     'View Details' => 'Voir les détails',
+    'Registered Courses'=>'Cours enregistrés',
+    'Registered Students'=>'Étudiants inscrits',
 ];
