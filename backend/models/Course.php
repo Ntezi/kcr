@@ -8,6 +8,7 @@
 
 namespace backend\models;
 
+use Yii;
 use common\models\Course as BaseCourse;
 use yii\behaviors\BlameableBehavior;
 
@@ -35,6 +36,22 @@ class Course extends BaseCourse
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'updated_by',
             ],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'instructor_id' => Yii::t('app', 'Instructor'),
+            'course_field_id' => Yii::t('app', 'Course Field'),
+            'semester_id' => Yii::t('app', 'Semester'),
+            'title' => Yii::t('app', 'Title'),
+            'course_code' => Yii::t('app', 'Course Code'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
         ];
     }
 

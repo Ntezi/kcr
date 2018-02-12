@@ -8,7 +8,7 @@ return [
     'bootstrap' => [
         [
             'class' => 'common\components\LanguageSelector',
-            'supportedLanguages' => ['en-US', 'ja-JA', 'ja-JP'],
+            'supportedLanguages' => ['en-US', 'ja-JA', 'ja-JP', 'fr-FR'],
         ],
     ],
     'components' => [

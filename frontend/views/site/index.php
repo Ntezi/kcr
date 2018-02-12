@@ -32,7 +32,7 @@ $this->title = Yii::$app->name;
                     </div>
                     <a href="<?php echo Yii::$app->request->baseUrl . '/course?semester_id=' . $semester->id; ?>">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left"><?php echo Yii::t('app', 'View Details') ?></span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>

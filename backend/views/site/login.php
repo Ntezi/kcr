@@ -15,17 +15,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-4 col-md-offset-4">
         <div class="login-panel panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Please Sign In</h3>
+                <h3 class="panel-title"><?php echo Yii::t('app', 'Please Sign In'); ?></h3>
             </div>
             <div class="panel-body">
 
                 <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
                 <?= $form->field($model, 'username')
-                    ->textInput(['autofocus' => true, 'placeholder' => Yii::t('app', 'Enter email')]) ?>
+                    ->textInput(['autofocus' => true, 'placeholder' => Yii::t('app', 'Enter email')])->label(false); ?>
 
                 <?= $form->field($model, 'password')
-                    ->passwordInput(['placeholder' => Yii::t('app', 'Enter password')]) ?>
+                    ->passwordInput(['placeholder' => Yii::t('app', 'Enter password')])->label(false); ?>
 
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
