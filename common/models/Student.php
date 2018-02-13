@@ -19,6 +19,7 @@ use Yii;
  * @property int $created_by
  * @property int $updated_by
  *
+ * @property User $user
  * @property StudentGrade[] $studentGrades
  * @property StudentHasCourses[] $studentHasCourses
  * @property Course[] $courses
@@ -45,6 +46,7 @@ class Student extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['full_name'], 'string', 'max' => 255],
             [['user_id'], 'unique'],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -66,6 +68,14 @@ class Student extends \yii\db\ActiveRecord
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**

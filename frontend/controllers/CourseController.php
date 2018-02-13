@@ -2,11 +2,13 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use backend\models\Course;
 use backend\models\Semester;
 use backend\models\StudentHasCourses;
 use frontend\components\BaseController;
 use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 
 class CourseController extends BaseController
 {
@@ -45,6 +47,22 @@ class CourseController extends BaseController
             'dataProvider' => $dataProvider,
         ]);
         
+    }
+
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Course::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
 
